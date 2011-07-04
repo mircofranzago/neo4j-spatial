@@ -124,20 +124,20 @@ public class LayersTest extends Neo4jTestCase
     {
         SpatialDatabaseService db = new SpatialDatabaseService( graphDb() );
         EditableLayer layer = (EditableLayer) db.getOrCreateEditableLayer( "roads" );
-        Coordinate crossing_bygg_förstadsgatan = new Coordinate( 13.0171471,
+        Coordinate crossing = new Coordinate( 13.0171471,
                 55.6074148 );
-        Coordinate[] waypoints_förstadsgatan = {
+        Coordinate[] waypoints = {
                 new Coordinate( 13.0201511, 55.6066846 ),
-                crossing_bygg_förstadsgatan };
-        LineString östra_förstadsgatan_malmö = layer.getGeometryFactory().createLineString(
-                waypoints_förstadsgatan );
-        Coordinate[] waypoints_byggmästaregatan = {
-                crossing_bygg_förstadsgatan,
+                crossing };
+        LineString linestring = layer.getGeometryFactory().createLineString(
+                waypoints );
+        Coordinate[] waypoints_b = {
+                crossing,
                 new Coordinate( 13.0182092, 55.6088238 ) };
-        LineString byggmästaregatan_malmö = layer.getGeometryFactory().createLineString(
-                waypoints_byggmästaregatan );
-        LineString[] test_way_segments = { byggmästaregatan_malmö,
-                östra_förstadsgatan_malmö };
+        LineString linestring2 = layer.getGeometryFactory().createLineString(
+                waypoints_b );
+        LineString[] test_way_segments = { linestring2,
+               linestring };
         MultiLineString test_way = layer.getGeometryFactory().createMultiLineString(
                 test_way_segments );
         Coordinate slussgatan14 = new Coordinate( 13.0181127, 55.608236 );
