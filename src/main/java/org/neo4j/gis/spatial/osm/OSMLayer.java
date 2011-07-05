@@ -230,7 +230,8 @@ public class OSMLayer extends DynamicLayer {
 	 * @return Style or null
 	 */
 	public File getStyle() {
-		return new File("dev/neo4j/neo4j-spatial/src/main/resources/sld/osm/osm.sld");
+		//return new File("dev/neo4j/neo4j-spatial/src/main/resources/sld/osm/osm.sld");
+		return new File("C:\\Users\\Mirco Franzago\\neo4j-spatial\\src\\main\\resources\\sld\\osm");
 	}
 
 }
