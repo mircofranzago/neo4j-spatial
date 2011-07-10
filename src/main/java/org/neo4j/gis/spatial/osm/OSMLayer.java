@@ -213,6 +213,29 @@ public class OSMLayer extends DynamicLayer {
 		tags.put(key, value);
 		return addDynamicLayerOnWayTags(value==null ? key : key + "-" + value, gtype, tags);
 	}
+	
+	/**
+	 * Add a rule for a pure way based search, with multiple property key/value
+	 * match on the way tags. All ways with the specified tag properties will be
+	 * returned. 
+	 * 
+	 * @param name
+	 * 			rule's name
+	 * @param geometry
+	 *            type as defined in Constants.
+	 * @param query
+	 *            String of ',' separated key=value tags to match
+	 */
+	public LayerConfig addSimpleDynamicLayer(String name, int gtype, String tagsQuery) {
+		HashMap<String, String> tags = new HashMap<String, String>();
+		for (String query : tagsQuery.split("\\s*\\,\\s*")) {
+			String[] fields = query.split("\\s*\\=+\\s*");
+			String key = fields[0];
+			String value = fields.length > 1 ? fields[1] : "*";
+			tags.put(key, value);
+		}
+		return addDynamicLayerOnWayTags(name, gtype, tags);
+	}
 
 	/**
 	 * Add a rule for a pure way based search, with multiple property key/value

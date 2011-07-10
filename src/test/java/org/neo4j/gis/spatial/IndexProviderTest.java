@@ -34,7 +34,7 @@ import org.neo4j.cypher.commands.Query;
 import org.neo4j.cypher.javacompat.CypherParser;
 import org.neo4j.cypher.javacompat.ExecutionEngine;
 import org.neo4j.cypher.javacompat.ExecutionResult;
-import org.neo4j.cypher.SyntaxException;
+import org.neo4j.cypher.SyntaxError;
 import org.neo4j.gis.spatial.indexprovider.LayerNodeIndex;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Transaction;
@@ -64,7 +64,7 @@ public class IndexProviderTest
     }
     
     @Test
-    public void testNodeIndex() throws SyntaxException {
+    public void testNodeIndex() throws SyntaxError {
         Map<String, String> config = Collections.unmodifiableMap( MapUtil.stringMap(
                 "provider", "spatial" ) );
         IndexManager indexMan = db.index();
